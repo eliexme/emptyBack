@@ -27,9 +27,9 @@ router.post('/signup', (req, res, next) => {
   }
   
   // Use regex to validate the password format
-  const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/;
   if (!passwordRegex.test(password)) {
-    res.status(400).json({ message: 'Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.' });
+    res.status(400).json({ message: 'Password must have at least 6 characters and contain at least one number, and one letter.' });
     return;
   }
 
@@ -123,7 +123,7 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 
   // If JWT token is valid the payload gets decoded by the
   // isAuthenticated middleware and made available on `req.payload`
-  console.log(`req.payload`, req.payload);
+  /* console.log(`req.payload`, req.payload) */;
 
   // Send back the object with user data
   // previously set as the token payload
