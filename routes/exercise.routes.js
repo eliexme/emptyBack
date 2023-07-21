@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const Exercise = require("../models/Exercise.model");
 
-router.get("/", (req, res, next) => {
-  res.json("All good in exercise");
+router.get("/", async(req, res, next) => {
+    const allExercises = await Exercise.find()
+    res.status(200).json(allExercises);
 });
 
 router.post("/add", async(req, res, next) => {
