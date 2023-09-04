@@ -6,7 +6,7 @@ const exerciseLogSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    exercise:{
+    exerciseId:{
         type: Schema.Types.ObjectId,
         ref: 'Exercise'
     },
